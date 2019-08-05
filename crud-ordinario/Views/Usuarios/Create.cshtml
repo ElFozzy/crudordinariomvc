@@ -1,0 +1,82 @@
+﻿@model crud_ordinario.Models.usuarios
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Usuarios", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Nuevo Registro</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Nombre</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Email</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Teléfono</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Estado Civil</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.edociv, new SelectList(new string[] { "Soltero", "Casado"}, "Seleccione"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.edociv, "", new { @class = "text-danger" })
+            </div>
+        </div>      
+
+        <div class="form-group">
+            <label class="control-label col-md-2">¿Tiene Hijos?</label>
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.hijos, "Si") Si 
+                @Html.RadioButtonFor(model => model.hijos, "No") No 
+            </div>
+        </div> 
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Intereses</label>
+            <div class="col-md-10">
+                @Html.CheckBox("Libros", false)<span> Libros </span>&nbsp
+                @Html.CheckBox("Musica", false)<span> Musica </span> &nbsp
+                @Html.CheckBox("Deportes", false)<span> Deportes </span>&nbsp
+                @Html.CheckBox("Otros", false)<span> Otros </span>&nbsp
+            </div>
+        </div> 
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+

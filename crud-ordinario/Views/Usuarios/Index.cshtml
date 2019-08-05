@@ -1,0 +1,55 @@
+﻿@model IEnumerable<crud_ordinario.Models.usuarios>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+
+    <br />
+    <br />
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Teléfono
+            </th>
+            <th>
+                Estado Civil
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.edociv)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id }, new { @class= "btn btn-primary" }) 
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

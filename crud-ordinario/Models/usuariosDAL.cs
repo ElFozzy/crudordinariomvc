@@ -10,7 +10,8 @@ namespace crud_ordinario.Models
 {
     public class usuariosDAL
     {
-        string connectionString = @"Data Source=.;Initial Catalog=usuarios;Integrated Security=True";
+        string connectionString = @"Data Source=den1.mssql7.gear.host;Initial Catalog=crudordinario;User Id=crudordinario;
+Password=Db8gM0t!~PdG;";
 
         public IEnumerable<usuarios> ListarUsuarios()
         {
